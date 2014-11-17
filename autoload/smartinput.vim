@@ -472,9 +472,11 @@ function! s:find_the_most_proper_rule_in_insert_mode(nrules, char)  "{{{2
       continue
     endif
 
+    let matches = matchlist(&l:filetype, '\(\k\+\)\.\(\k\+\)')
+    let first_ft = len(matches) > 0 ? matches[1] : &l:filetype
     if !(nrule.filetype is 0
     \    ? !0
-    \    : 0 <= index(nrule.filetype,  &l:filetype))
+    \    : 0 <= index(nrule.filetype, first_ft))
       continue
     endif
 
