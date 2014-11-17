@@ -325,7 +325,11 @@ function! s:_trigger_or_fallback(char, fallback)
   if nrule is 0
     return a:fallback
   else
-    return nrule._input
+    let input = nrule._input
+    if pumvisible()
+      let input = "\<C-e>" . input
+    endif
+    return input
   endif
 endfunction
 
