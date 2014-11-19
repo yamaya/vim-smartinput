@@ -327,7 +327,7 @@ function! s:_trigger_or_fallback(char, fallback)
   else
     let input = nrule._input
     if pumvisible()
-      let input = "\<C-e>" . input
+      let input = "\<C-y>" . input
     endif
     return input
   endif
